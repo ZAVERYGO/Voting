@@ -1,12 +1,9 @@
 package com.kozich.voting.dao.api;
 
+import com.kozich.voting.Entity.VoteEntity;
+
 import java.util.Map;
 
-public interface VoteDao {
+public interface VoteDao extends DictionaryDao<VoteEntity>{
 
-    void save(String artist, String[] genres, String about);
-
-    Map<String, Integer> getArtist();
-    Map<String, Integer> getGenre();
-    Map<String, String> getAbout();
 }

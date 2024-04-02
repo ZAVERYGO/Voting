@@ -1,34 +1,33 @@
 package com.kozich.voting.dao.impl;
 
-import com.kozich.voting.Entity.VoteEntity;
-
-import com.kozich.voting.dao.api.VoteDao;
+import com.kozich.voting.Entity.ArtistEntity;
+import com.kozich.voting.dao.api.ArtistDao;
 import com.kozich.voting.dao.factory.DaoFactory;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-import java.util.*;
+public class ArtistDaoImpl implements ArtistDao {
 
-public class VoteDaoImpl implements VoteDao {
-
-    private final static String GET_LIST = "SELECT id, dt_create, artist, about FROM app.vote";
+    private final static String GET_LIST = "SELECT id, name FROM app.artist";
     private final static String GET_BY_ID = GET_LIST + " WHERE id = ";
 
     @Override
-    public List<VoteEntity> get() {
-        List<VoteEntity> data = new ArrayList<>();
+    public List<ArtistEntity> get() {
+        List<ArtistEntity> data = new ArrayList<>();
         try(Connection conn = DaoFactory.getConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(GET_LIST);
         ){
             while (rs.next()) {
-                VoteEntity entity = new VoteEntity();
+                ArtistEntity entity = new ArtistEntity();
                 entity.setId(rs.getLong("id"));
-                entity.setArtistId(rs.getLong("artist_id"));
-                entity.setAbout(rs.getString("about"));
+                entity.setName(rs.getString("name"));
                 data.add(entity);
             }
         } catch (SQLException e){
@@ -37,19 +36,19 @@ public class VoteDaoImpl implements VoteDao {
 
         return data;
     }
+
     @Override
-    public Optional<VoteEntity> get(long id) {
+    public Optional<ArtistEntity> get(long id) {
         try(Connection conn = DaoFactory.getConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(GET_BY_ID + id);
         ){
-            VoteEntity entity = null;
+            ArtistEntity entity = null;
             while (rs.next()) {
                 if(entity == null){
-                    entity = new VoteEntity();
+                    entity = new ArtistEntity();
                     entity.setId(rs.getLong("id"));
-                    entity.setArtistId(rs.getLong("artist_id"));
-                    entity.setAbout(rs.getString("about"));
+                    entity.setName(rs.getString("name"));
                 } else {
                     throw new IllegalStateException("В запросе получилось больше одного значения");
                 }

@@ -14,6 +14,7 @@
         <servlet-class>com.kozich.voting.controller.http.StatisticsServlet</servlet-class>
     </servlet>
 
+
     <servlet-mapping>
         <servlet-name>VotingServlet</servlet-name>
         <url-pattern>/voting</url-pattern>

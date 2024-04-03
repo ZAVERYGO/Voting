@@ -1,45 +1,32 @@
 package com.kozich.voting.Entity;
 
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 import java.time.LocalDateTime;
 
+@Accessors(chain = true)
+@Setter
+@Getter
 public class VoteEntity {
     private long id;
     private LocalDateTime dt_create;
-    private long artistId;
-
     private String about;
+    private long artistId;
+    private long[] genresId;
 
     public VoteEntity() {
     }
 
-    public VoteEntity(long id, long artistId, String about) {
+    public VoteEntity(long id, LocalDateTime dt_create, String about, long artistId, long[] genresId) {
         this.id = id;
+        this.dt_create = dt_create;
+        this.about = about;
         this.artistId = artistId;
-        this.about = about;
+        this.genresId = genresId;
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getArtistId() {
-        return artistId;
-    }
-
-    public void setArtistId(long artist_id) {
-        this.artistId = artist_id;
-    }
-
-    public String getAbout() {
-        return about;
-    }
-
-    public void setAbout(String about) {
-        this.about = about;
-    }
 }

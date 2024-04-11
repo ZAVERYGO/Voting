@@ -1,4 +1,4 @@
-package com.kozich.voting.controller.http.utils;
+package com.kozich.voting.controller.utils;
 
 import java.io.IOException;
 import java.io.Writer;

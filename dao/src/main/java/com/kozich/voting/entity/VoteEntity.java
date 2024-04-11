@@ -1,4 +1,5 @@
-package com.kozich.voting.service.api.dto;
+package com.kozich.voting.entity;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,15 +7,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDateTime;
+
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class GenreDTO {
+public class VoteEntity {
 
     private long id;
-
-    private String name;
+    private LocalDateTime dtCreate;
+    private long artistId;
+    private long[] genresId;
+    private String about;
 
 }

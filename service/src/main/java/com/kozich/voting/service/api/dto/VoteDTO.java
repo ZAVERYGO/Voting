@@ -6,15 +6,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class GenreDTO {
+public class VoteDTO {
 
-    private long id;
+        private long artistId;
 
-    private String name;
+        private long[] genresId;
+
+        private String about;
 
 }

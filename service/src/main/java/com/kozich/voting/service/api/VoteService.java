@@ -1,11 +1,10 @@
 package com.kozich.voting.service.api;
 
+import com.kozich.voting.entity.VoteEntity;
+import com.kozich.voting.service.api.dto.VoteDTO;
+
 import java.util.Map;
 
 public interface VoteService {
-    void save(String artist, String[] genres, String about);
-
-    Map<String, Integer> getArtist();
-    Map<String, Integer> getGenre();
-    Map<String, String> getAbout();
+    void save(VoteDTO vote);
 }

@@ -1,9 +1,10 @@
 package com.kozich.voting.dao.api;
 
-import com.kozich.voting.Entity.VoteEntity;
+import com.kozich.voting.entity.VoteEntity;
 
-import java.util.Map;
 
-public interface VoteDao extends DictionaryDao<VoteEntity>{
+public interface VoteDao {
+
+    void save(VoteEntity voteEntity);
 
 }

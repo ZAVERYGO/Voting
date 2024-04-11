@@ -1,4 +1,4 @@
-package com.kozich.voting.service.api.dto;
+package com.kozich.voting.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Setter
 @Getter
-public class GenreDTO {
+public class GenreEntity {
 
     private long id;
 

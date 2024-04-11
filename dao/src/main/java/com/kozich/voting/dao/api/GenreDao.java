@@ -1,6 +1,7 @@
 package com.kozich.voting.dao.api;
 
-import com.kozich.voting.Entity.GenreEntity;
+import com.kozich.voting.entity.GenreEntity;
 
 public interface GenreDao extends DictionaryDao<GenreEntity>{
+
 }

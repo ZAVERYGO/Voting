@@ -2,9 +2,11 @@ package com.kozich.voting.dao.factory;
 
 import com.kozich.voting.dao.api.ArtistDao;
 import com.kozich.voting.dao.api.GenreDao;
+import com.kozich.voting.dao.api.StatisticDao;
 import com.kozich.voting.dao.api.VoteDao;
 import com.kozich.voting.dao.impl.ArtistDaoImpl;
 import com.kozich.voting.dao.impl.GenreDaoImpl;
+import com.kozich.voting.dao.impl.StatisticDaoImpl;
 import com.kozich.voting.dao.impl.VoteDaoImpl;
 
 
@@ -17,6 +19,7 @@ public class DaoFactory {
     private volatile static VoteDao voteDao;
     private volatile static ArtistDao artistDao;
     private volatile static GenreDao genreDao;
+    private volatile static StatisticDao statisticDao;
     private static final String url = "jdbc:postgresql://localhost:5432/voting";
     private static final Properties props = new Properties();
 
@@ -71,5 +74,16 @@ public class DaoFactory {
         } catch (SQLException e){
             throw new IllegalStateException("Невозможно подключиться к базе данных", e);
         }
+    }
+
+    public static StatisticDao getStatisticDao(){
+        if(statisticDao == null){
+            synchronized (DaoFactory.class){
+                if(statisticDao == null){
+                    statisticDao = new StatisticDaoImpl();
+                }
+            }
+        }
+        return statisticDao;
     }
 }
